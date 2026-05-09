@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="180° Agencia Digital — Transformamos tu presencia digital. Redes sociales, sitios web, branding, SEO y más en Colombia."/>
+  <meta name="keywords" content="agencia digital, marketing digital, redes sociales, diseño web, SEO, Colombia, branding"/>
+  <meta property="og:title" content="180° Agencia Digital"/>
+  <meta property="og:description" content="Transformamos tu presencia digital con estrategia, diseño y resultados reales."/>
+  <meta property="og:type" content="website"/>
+  <meta name="theme-color" content="#0d0d0d"/>
+  <title>180° Agencia Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --red:#E8391A;--red-d:#C0392B;
+    --purple:#7B2D8B;--purple-d:#5B2380;--purple-l:#9B4DB5;
+    --black:#0d0d0d;--b2:#141414;--b3:#1a1a1a;--b4:#202020;
+    --white:#F0EEF5;--gray:#888;--gray2:#555;
+    --grad:linear-gradient(135deg,#E8391A 0%,#7B2D8B 100%);
+    --grad-r:linear-gradient(135deg,#7B2D8B 0%,#E8391A 100%);
+    --border:rgba(123,45,139,0.22);
+    --fh:'Bebas Neue',sans-serif;--fb:'Outfit',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--white);font-family:var(--fb);font-weight:400;overflow-x:hidden;cursor:none}
+  img{max-width:100%;display:block} a{text-decoration:none;color:inherit} ul{list-style:none}
+  ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:var(--black)} ::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px}
+
+  #cur{position:fixed;top:0;left:0;width:12px;height:12px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s}
+  #cur-ring{position:fixed;top:0;left:0;width:38px;height:38px;border:1.5px solid rgba(123,45,139,.55);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:22px 5%;display:flex;align-items:center;justify-content:space-between;transition:padding .4s,background .4s}
+  nav.scrolled{padding:13px 5%;background:rgba(13,13,13,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .nav-logo img{height:50px;width:auto}
+  .nav-links{display:flex;align-items:center;gap:36px}
+  .nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(240,238,245,.6);transition:color .3s}
+  .nav-links a:hover{color:var(--white)}
+  .nav-cta{background:var(--grad);color:#fff!important;padding:11px 28px;font-size:11px!important;font-weight:700!important;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:opacity .3s,transform .2s!important}
+  .nav-cta:hover{opacity:.85;transform:translateY(-1px)!important}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:none;padding:6px;background:none;border:none}
+  .nav-toggle span{display:block;width:26px;height:2px;background:var(--white);transition:transform .3s,opacity .3s}
+
+  #hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 75% 40%,rgba(123,45,139,.18) 0%,transparent 70%),radial-gradient(ellipse 50% 50% at 20% 70%,rgba(232,57,26,.1) 0%,transparent 60%),var(--black)}
+  .hero-grid{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(0deg,rgba(123,45,139,.8) 0px,transparent 1px,transparent 62px),repeating-linear-gradient(90deg,rgba(232,57,26,.4) 0px,transparent 1px,transparent 80px)}
+  .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+  .hero-orb.o1{width:480px;height:480px;background:rgba(123,45,139,.14);right:-80px;top:-80px;animation:orbf 8s ease-in-out infinite}
+  .hero-orb.o2{width:340px;height:340px;background:rgba(232,57,26,.09);left:-60px;bottom:0;animation:orbf 10s ease-in-out infinite reverse}
+  @keyframes orbf{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-36px) scale(1.04)}}
+  .hero-inner{position:relative;z-index:1;padding:120px 5% 80px;max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:22px;opacity:0;animation:fu .7s ease .1s forwards}
+  .hero-tag::before,.hero-tag::after{content:'';width:26px;height:2px;background:var(--red)}
+  .hero-h1{font-family:var(--fh);font-size:clamp(60px,8vw,98px);line-height:.92;letter-spacing:1px;margin-bottom:26px;opacity:0;animation:fu .8s ease .25s forwards}
+  .gt{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hero-p{font-size:16px;font-weight:300;line-height:1.8;color:rgba(240,238,245,.68);max-width:480px;margin-bottom:42px;opacity:0;animation:fu .8s ease .4s forwards}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fu .8s ease .55s forwards}
+  .btn-m{display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;background:var(--grad);padding:16px 40px;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:opacity .3s,transform .2s,box-shadow .3s;position:relative;overflow:hidden}
+  .btn-m::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);transform:translateX(-100%);transition:transform .4s}
+  .btn-m:hover::after{transform:translateX(0)} .btn-m:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(232,57,26,.32)}
+  .btn-g{display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:transparent;padding:15px 40px;border:1.5px solid rgba(123,45,139,.45);clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:border-color .3s,color .3s,transform .2s}
+  .btn-g:hover{border-color:var(--purple-l);color:var(--purple-l);transform:translateY(-2px)}
+  .hero-right{display:flex;align-items:center;justify-content:center;opacity:0;animation:fr .9s ease .5s forwards}
+  .hero-logo-wrap{position:relative;width:320px;height:320px;display:flex;align-items:center;justify-content:center}
+  .hero-logo-wrap::before{content:'';position:absolute;inset:-20px;border-radius:50%;border:1px solid rgba(123,45,139,.28);animation:spin 20s linear infinite}
+  .hero-logo-wrap::after{content:'';position:absolute;inset:-52px;border-radius:50%;border:1px dashed rgba(232,57,26,.13);animation:spin 30s linear infinite reverse}
+  .hero-logo-wrap img{width:280px;filter:drop-shadow(0 0 44px rgba(123,45,139,.38))}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero-stats{display:flex;gap:40px;margin-top:52px;opacity:0;animation:fu .8s ease .7s forwards}
+  .hs-n{font-family:var(--fh);font-size:42px;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hs-l{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:4px}
+  @keyframes fu{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fr{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:translateX(0)}}
+  .scroll-ind{position:absolute;bottom:38px;left:5%;display:flex;align-items:center;gap:12px;opacity:0;animation:fu .8s ease 1s forwards}
+  .scroll-ind span{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray)}
+  .scroll-line{width:1px;height:46px;background:linear-gradient(to bottom,var(--purple),transparent)}
+
+  .sec{padding:96px 5%}
+  .wrap{max-width:1280px;margin:0 auto}
+  .sl{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+  .st{font-family:var(--fh);font-size:clamp(40px,5vw,66px);line-height:.95;letter-spacing:1px;margin-bottom:18px}
+  .ss{font-size:15px;font-weight:300;color:rgba(240,238,245,.58);line-height:1.8;max-width:540px}
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+  .rv.on{opacity:1;transform:translateY(0)}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+  #strip{padding:26px 0;background:linear-gradient(90deg,var(--b2),var(--b3),var(--b2));border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+  .strip-t{display:flex;gap:56px;animation:ss2 22s linear infinite;white-space:nowrap;width:max-content}
+  .strip-i{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(240,238,245,.38)}
+  .strip-d{width:5px;height:5px;background:var(--grad);border-radius:50%;flex-shrink:0}
+  @keyframes ss2{to{transform:translateX(-50%)}}
+
+  #about{background:var(--b2)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .about-box{background:var(--b3);border:1px solid var(--border);padding:48px 40px;position:relative;overflow:hidden}
+  .about-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+  .about-box-bg{font-family:var(--fh);font-size:140px;color:rgba(123,45,139,.06);position:absolute;bottom:-20px;right:-10px;line-height:1;user-select:none}
+  .am{margin-bottom:30px} .am:last-child{margin-bottom:0}
+  .am-n{font-family:var(--fh);font-size:54px;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .am-l{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:4px}
+  .am-bar{height:2px;background:var(--b4);margin-top:10px;border-radius:1px;overflow:hidden}
+  .am-bar-f{height:100%;background:var(--grad);border-radius:1px;width:0;transition:width 1.5s ease}
+  .about-p{font-size:14px;font-weight:300;line-height:1.9;color:rgba(240,238,245,.62);margin-bottom:14px}
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border:1px solid var(--border);color:rgba(240,238,245,.45);transition:border-color .3s,color .3s}
+  .tag:hover{border-color:var(--purple-l);color:var(--white)}
+
+  #port{background:var(--black)}
+  .ptabs{display:flex;gap:0;flex-wrap:wrap;margin-bottom:56px;border-bottom:1px solid var(--border)}
+  .ptab{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px 24px;color:var(--gray);background:transparent;border:none;cursor:none;border-bottom:2px solid transparent;transition:color .3s,border-color .3s;margin-bottom:-1px}
+  .ptab.active{color:var(--white);border-bottom-color:var(--red)} .ptab:hover{color:rgba(240,238,245,.8)}
+  .ppanel{display:none} .ppanel.active{display:block;animation:pin .4s ease}
+  @keyframes pin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+  .sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:2px;background:var(--border)}
+  .sc{background:var(--b2);padding:42px 34px;position:relative;overflow:hidden;transition:background .4s}
+  .sc::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--grad);transition:height .5s}
+  .sc:hover{background:var(--b3)} .sc:hover::before{height:100%}
+  .sc-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;background:rgba(123,45,139,.12);border:1px solid rgba(123,45,139,.28);color:var(--purple-l);margin-bottom:18px}
+  .sc-icon{font-size:30px;margin-bottom:18px;display:block}
+  .sc-title{font-family:var(--fh);font-size:27px;letter-spacing:.5px;color:var(--white);margin-bottom:14px;line-height:1.1}
+  .sc-list li{font-size:12px;font-weight:300;color:rgba(240,238,245,.58);line-height:1.6;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:flex-start;gap:9px}
+  .sc-list li:last-child{border-bottom:none} .sc-list li::before{content:'›';color:var(--red);font-size:15px;line-height:1.2;flex-shrink:0}
+  .sc-foot{margin-top:24px;display:flex;align-items:center;justify-content:space-between}
+  .sc-cta{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:8px;transition:gap .3s}
+  .sc-cta::after{content:'→';transition:transform .3s}
+  .sc:hover .sc-cta{gap:14px} .sc:hover .sc-cta::after{transform:translateX(4px)}
+
+  .pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(276px,1fr));gap:2px;background:var(--border)}
+  .pc{background:var(--b2);padding:38px 30px;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:background .4s}
+  .pc.feat{background:linear-gradient(160deg,rgba(123,45,139,.13) 0%,rgba(232,57,26,.07) 100%)}
+  .pc.feat::after{content:'RECOMENDADO';position:absolute;top:20px;right:-30px;font-size:8px;font-weight:700;letter-spacing:2px;background:var(--grad);color:#fff;padding:5px 44px;transform:rotate(45deg)}
+  .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--border);transition:background .4s}
+  .pc.feat::before,.pc:hover::before{background:var(--grad)} .pc:hover{background:var(--b3)}
+  .pc-name{font-family:var(--fh);font-size:30px;letter-spacing:.5px;margin-bottom:6px}
+  .pc-sub{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:26px}
+  .pc-list{flex:1} .pc-list li{font-size:11.5px;font-weight:300;color:rgba(240,238,245,.58);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:flex-start;gap:9px;line-height:1.5}
+  .pc-list li:last-child{border-bottom:none} .pc-list li::before{content:'✓';color:var(--purple-l);font-size:11px;flex-shrink:0;font-weight:700}
+  .pc-btn{margin-top:26px;display:block;text-align:center;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px;background:var(--b4);border:1px solid var(--border);color:rgba(240,238,245,.55);transition:background .3s,border-color .3s,color .3s}
+  .pc.feat .pc-btn,.pc:hover .pc-btn{background:var(--grad);border-color:transparent;color:#fff}
+
+  #proceso{background:var(--b2)}
+  .pg2{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:60px;position:relative}
+  .pg2::before{content:'';position:absolute;top:31px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--purple),var(--red),var(--purple),transparent);opacity:.35}
+  .ps{padding:0 18px;text-align:center;position:relative}
+  .ps-n{width:62px;height:62px;border-radius:50%;background:var(--black);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:var(--fh);font-size:24px;position:relative;z-index:1;transition:border-color .3s,box-shadow .3s}
+  .ps:hover .ps-n{border-color:var(--red);box-shadow:0 0 22px rgba(232,57,26,.28)}
+  .ps-n span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .ps-t{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:9px}
+  .ps-txt{font-size:11px;font-weight:300;color:var(--gray);line-height:1.7}
+
+  #cta-b{padding:96px 5%;background:linear-gradient(135deg,rgba(123,45,139,.13) 0%,rgba(232,57,26,.09) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+  .cta-t{font-family:var(--fh);font-size:clamp(46px,6vw,78px);line-height:.95;letter-spacing:1px;margin-bottom:22px}
+  .cta-s{font-size:16px;font-weight:300;color:rgba(240,238,245,.58);margin-bottom:44px;max-width:480px;margin-left:auto;margin-right:auto}
+  .cta-acts{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+
+  #contacto{background:var(--black)}
+  .cg{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
+  .ci{margin-top:38px}
+  .ci-item{display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--border)}
+  .ci-item:first-child{border-top:1px solid var(--border)}
+  .ci-ic{width:42px;height:42px;background:var(--b3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;transition:border-color .3s}
+  .ci-item:hover .ci-ic{border-color:var(--purple)}
+  .ci-lb{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+  .ci-val{font-size:13px;color:rgba(240,238,245,.68)}
+  .cf{background:var(--b2);border:1px solid var(--border);padding:46px 38px;position:relative;overflow:hidden}
+  .cf::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
+  .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .cfg{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+  .cfg label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple-l)}
+  .cfg input,.cfg select,.cfg textarea{background:var(--b3);border:1px solid var(--border);color:var(--white);font-family:var(--fb);font-size:13px;font-weight:300;padding:13px 16px;outline:none;transition:border-color .3s,background .3s;-webkit-appearance:none;appearance:none}
+  .cfg select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237B2D8B' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+  .cfg select option{background:var(--b3);color:var(--white)}
+  .cfg input:focus,.cfg select:focus,.cfg textarea:focus{border-color:var(--purple);background:rgba(123,45,139,.05)}
+  .cfg input::placeholder,.cfg textarea::placeholder{color:var(--gray2)}
+  .cfg textarea{resize:vertical;min-height:106px}
+  .cf-sub{width:100%;background:var(--grad);color:#fff;font-family:var(--fb);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:17px;border:none;cursor:none;transition:opacity .3s,transform .2s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);margin-top:6px}
+  .cf-sub:hover{opacity:.84;transform:translateY(-1px)}
+  .cf-ok{display:none;text-align:center;padding:46px 20px;background:rgba(123,45,139,.07);border:1px solid var(--border)}
+  .cf-ok.show{display:block}
+  .cf-ok-ic{font-size:46px;margin-bottom:14px}
+  .cf-ok p{font-family:var(--fh);font-size:26px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+  footer{background:var(--b2);border-top:1px solid var(--border);padding:56px 5% 28px}
+  .ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:56px}
+  .fb img{height:54px;margin-bottom:18px}
+  .fb p{font-size:13px;font-weight:300;color:rgba(240,238,245,.45);line-height:1.8;max-width:270px}
+  .fc-t{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:18px}
+  .fc ul li{margin-bottom:9px}
+  .fc ul a{font-size:13px;color:rgba(240,238,245,.45);transition:color .3s}
+  .fc ul a:hover{color:var(--white)}
+  .fb2{display:flex;align-items:center;justify-content:space-between;padding-top:22px;border-top:1px solid var(--border)}
+  .fc2{font-size:11px;color:rgba(240,238,245,.3);letter-spacing:.5px}
+  .fsoc{display:flex;gap:10px}
+  .fs{width:34px;height:34px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;color:rgba(240,238,245,.38);transition:border-color .3s,color .3s,background .3s}
+  .fs:hover{border-color:var(--purple);color:var(--white);background:rgba(123,45,139,.14)}
+
+  .wa{position:fixed;bottom:32px;left:32px;z-index:500;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(37,211,102,.38);animation:wap 2.5s ease-in-out infinite;transition:transform .3s}
+  .wa:hover{transform:scale(1.1)}
+  .wa svg{width:26px;height:26px;fill:#fff}
+  @keyframes wap{0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.38)}50%{box-shadow:0 8px 44px rgba(37,211,102,.62),0 0 0 10px rgba(37,211,102,.1)}}
+
+  @media(max-width:1024px){
+    .hero-inner{grid-template-columns:1fr;text-align:center;gap:36px}
+    .hero-p{margin:0 auto 40px} .hero-btns{justify-content:center} .hero-stats{justify-content:center}
+    .about-grid{grid-template-columns:1fr;gap:44px}
+    .pg2{grid-template-columns:repeat(3,1fr);gap:28px} .pg2::before{display:none}
+    .cg{grid-template-columns:1fr} .ft{grid-template-columns:1fr 1fr;gap:36px}
+  }
+  @media(max-width:768px){
+    nav{padding:15px 5%} nav.scrolled{padding:11px 5%}
+    .nav-links{display:none;position:fixed;inset:0;background:rgba(13,13,13,.98);flex-direction:column;align-items:center;justify-content:center;gap:28px}
+    .nav-links.open{display:flex} .nav-toggle{display:flex}
+    .hero-logo-wrap{width:210px;height:210px} .hero-logo-wrap img{width:180px}
+    .pg2{grid-template-columns:1fr 1fr} .sg,.pg{grid-template-columns:1fr}
+    .cf-row{grid-template-columns:1fr} .ft{grid-template-columns:1fr} .fb2{flex-direction:column;gap:18px;text-align:center}
+    .sec{padding:68px 5%}
+  }
+  </style>
+</head>
+<body>
+<div id="cur"></div><div id="cur-ring"></div>
+
+<a href="https://wa.me/573000000000" target="_blank" class="wa" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<nav id="nav">
+  <a href="#hero" class="nav-logo"><img src="logo.png" alt="180° Agencia Digital"/></a>
+  <ul class="nav-links" id="nl">
+    <li><a href="#about" onclick="cn()">Nosotros</a></li>
+    <li><a href="#port" onclick="cn()">Servicios</a></li>
+    <li><a href="#proceso" onclick="cn()">Proceso</a></li>
+    <li><a href="#contacto" class="nav-cta" onclick="cn()">Cotizar ahora</a></li>
+  </ul>
+  <button class="nav-toggle" id="nt" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-orb o1"></div><div class="hero-orb o2"></div>
+  <div class="hero-inner">
+    <div>
+      <p class="hero-tag">Agencia Digital · Colombia</p>
+      <h1 class="hero-h1"><span style="display:block">GIRAMOS TU</span><span class="gt">PRESENCIA</span><span style="display:block">DIGITAL 180°</span></h1>
+      <p class="hero-p">Estrategia, diseño y tecnología al servicio de tu marca. Transformamos negocios con soluciones digitales que generan resultados reales.</p>
+      <div class="hero-btns"><a href="#port" class="btn-m">Ver servicios</a><a href="#contacto" class="btn-g">Solicitar cotización</a></div>
+      <div class="hero-stats">
+        <div><div class="hs-n" id="hs1">0+</div><div class="hs-l">Clientes</div></div>
+        <div><div class="hs-n" id="hs2">0+</div><div class="hs-l">Proyectos</div></div>
+        <div><div class="hs-n" id="hs3">0%</div><div class="hs-l">Satisfacción</div></div>
+      </div>
+    </div>
+    <div class="hero-right"><div class="hero-logo-wrap"><img src="logo.png" alt="180° Agencia Digital"/></div></div>
+  </div>
+  <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div id="strip"><div class="strip-t" id="st"></div></div>
+
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="rv">
+        <div class="about-box">
+          <div class="about-box-bg">180</div>
+          <div class="am"><div class="am-n" id="am1">0+</div><div class="am-l">Marcas transformadas</div><div class="am-bar"><div class="am-bar-f" data-w="88"></div></div></div>
+          <div class="am"><div class="am-n" id="am2">0+</div><div class="am-l">Proyectos entregados</div><div class="am-bar"><div class="am-bar-f" data-w="76"></div></div></div>
+          <div class="am"><div class="am-n" id="am3">0%</div><div class="am-l">Clientes que renuevan</div><div class="am-bar"><div class="am-bar-f" data-w="92"></div></div></div>
+        </div>
+      </div>
+      <div>
+        <p class="sl rv">Quiénes somos</p>
+        <h2 class="st rv d1">SOMOS TU ALIADO <span class="gt">DIGITAL</span></h2>
+        <p class="about-p rv d2">En 180° Agencia Digital creemos que cada negocio merece una presencia digital que lo represente al 100%. Combinamos estrategia, creatividad y tecnología para llevar tu marca al siguiente nivel.</p>
+        <p class="about-p rv d2">Trabajamos con emprendedores, pymes y corporaciones en Colombia, entregando soluciones a medida que generan resultados medibles desde el primer mes.</p>
+        <div class="tags rv d3"><span class="tag">Estrategia Digital</span><span class="tag">Diseño UX/UI</span><span class="tag">Marketing de Contenidos</span><span class="tag">SEO & SEM</span><span class="tag">Branding</span><span class="tag">Desarrollo Web</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="port" class="sec">
+  <div class="wrap">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px;gap:28px;flex-wrap:wrap">
+      <div><p class="sl rv">Lo que hacemos</p><h2 class="st rv d1">NUESTROS <span class="gt">SERVICIOS</span></h2></div>
+      <p class="ss rv" style="margin-bottom:0">Soluciones digitales integrales adaptadas al tamaño y necesidades de tu empresa.</p>
+    </div>
+    <div class="ptabs rv">
+      <button class="ptab active" data-tab="redes">📱 Redes Sociales</button>
+      <button class="ptab" data-tab="web">💻 Sitios Web</button>
+      <button class="ptab" data-tab="brand">🎨 Branding</button>
+      <button class="ptab" data-tab="adm">⚙️ Admin Web</button>
+      <button class="ptab" data-tab="seo">🔍 SEO</button>
+      <button class="ptab" data-tab="av">🎬 Audiovisual</button>
+    </div>
+
+    <div class="ppanel active" id="tab-redes">
+      <div class="pg">
+        <div class="pc"><div class="pc-name">Plan <span class="gt">Emprendedor</span></div><div class="pc-sub">Para negocios que inician</div><ul class="pc-list"><li>2 Redes Sociales</li><li>Estrategia y diseño de contenidos / parrilla</li><li>8 publicaciones (posts, carruseles, reels o videos)</li><li>10–13 historias mensuales</li><li>Redacción de textos</li><li>Community management lunes a viernes</li><li>Divulgación de posts e historias</li><li>Informe simple mensual</li></ul><a href="#contacto" class="pc-btn">Solicitar plan</a></div>
+        <div class="pc feat"><div class="pc-name">Plan <span class="gt">Pyme</span></div><div class="pc-sub">Para negocios en crecimiento</div><ul class="pc-list"><li>3 Redes Sociales</li><li>Estrategia y diseño de contenidos / parrilla</li><li>12 publicaciones (posts, carruseles, reels o videos)</li><li>20–25 historias mensuales</li><li>Redacción de textos</li><li>Community management lunes a viernes</li><li>Divulgación de posts e historias</li><li>Diseño de Highlights</li><li>Diseño de 1 imagen para WhatsApp</li><li>Informe de gestión mensual con análisis</li></ul><a href="#contacto" class="pc-btn">Solicitar plan</a></div>
+        <div class="pc"><div class="pc-name">Plan <span class="gt">Corporativo</span></div><div class="pc-sub">Para empresas establecidas</div><ul class="pc-list"><li>3 Redes Sociales</li><li>Estrategia y diseño de contenidos / parrilla</li><li>18 publicaciones (posts, carruseles, reels o videos)</li><li>30–35 historias mensuales</li><li>Redacción de textos</li><li>Community management lunes a viernes</li><li>Divulgación de posts e historias</li><li>Diseño de Highlights</li><li>Diseño de 1 imagen para WhatsApp</li><li>Diseño de 1 aviso para pautar en redes</li><li>Informe de gestión mensual con análisis</li></ul><a href="#contacto" class="pc-btn">Solicitar plan</a></div>
+      </div>
+    </div>
+
+    <div class="ppanel" id="tab-web">
+      <div class="sg">
+        <div class="sc"><span class="sc-badge">Servicio Web</span><span class="sc-icon">🚀</span><h3 class="sc-title">Landing Page</h3><ul class="sc-list"><li>2 propuestas de diseño</li><li>Desarrollo desde etapa conceptual hasta lanzamiento</li><li>Redacción de textos y edición de imágenes</li><li>Optimización para móviles, tabletas y computadores</li><li>Formularios para captar leads</li><li>Integración de redes sociales</li><li>Configuración de Google Analytics</li><li>SEO básico para posicionamiento en Google</li><li>Integración con plataformas de email marketing</li><li>Soporte post-lanzamiento × 5 días</li></ul><div class="sc-foot"><a href="#contacto" class="sc-cta">Cotizar</a></div></div>
+        <div class="sc"><span class="sc-badge">Servicio Web</span><span class="sc-icon">🌐</span><h3 class="sc-title">Web Corporativo</h3><ul class="sc-list"><li>2 propuestas de diseño</li><li>Diseño de wireframe (arquitectura de navegación)</li><li>Desarrollo desde etapa conceptual hasta lanzamiento</li><li>Redacción de textos y edición de imágenes</li><li>Optimización para móviles, tabletas y computadores</li><li>Formularios para captar leads</li><li>Integración de redes sociales</li><li>Configuración de Google Analytics</li><li>SEO básico para posicionamiento en Google</li><li>Integración con plataformas de email marketing</li><li>Soporte post-lanzamiento × 10 días</li></ul><div class="sc-foot"><a href="#contacto" class="sc-cta">Cotizar</a></div></div>
+        <div class="sc"><span class="sc-badge">Servicio Web</span><span class="sc-icon">🛒</span><h3 class="sc-title">E-Commerce</h3><ul class="sc-list"><li>2 propuestas de diseño</li><li>Diseño de wireframe (arquitectura de navegación)</li><li>Desarrollo desde etapa conceptual hasta lanzamiento</li><li>Configuración de catálogos, carritos y pasarelas de pago</li><li>Redacción de textos y edición de imágenes</li><li>Optimización para móviles, tabletas y computadores</li><li>Formularios para captar leads</li><li>Integración de redes sociales</li><li>Configuración de Google Analytics</li><li>SEO básico para posicionamiento en Google</li><li>Soporte post-lanzamiento × 10 días</li></ul><div class="sc-foot"><a href="#contacto" class="sc-cta">Cotizar</a></div></div>
+      </div>
+    </div>
+
+    <div class="ppanel" id="tab-brand">
+      <div class="sg">
+        <div class="sc"><span class="sc-badge">Identidad de Marca</span><span class="sc-icon">⭐</span><h3 class="sc-title">Marca Básico</h3><ul class="sc-list"><li>Análisis de la competencia</li><li>Creación del concepto de marca</li><li>Construcción del logo</li><li>03 propuestas de diseño</li><li>Opción de 03 ajustes</li><li>Brandboard</li><li>Tarjeta corporativa</li><li>Hoja corporativa</li><li>02 publicaciones para Redes Sociales</li><li>Foto de perfil para Facebook e Instagram</li><li>Entregable: jpg, png, pdf, ai</li></ul><div class="sc-foot"><a href="#contacto" class="sc-cta">Cotizar</a></div></div>
+        <div class="sc"><span class="sc-badge">Identidad de Marca</span><span class="sc-icon">💎</span><h3 class="sc-title">Marca Corporativo</h3><ul class="sc-list"><li>Análisis de la competencia</li><li>Creación del concepto de marca</li><li>Construcción del logo</li><li>05 propuestas de diseño</li><li>Opción de 05 ajustes</li><li>Manual de marca completo</li><li>Tarjeta corporativa</li><li>Hoja corporativa</li><li>03 publicaciones para Redes Sociales</li><li>Foto de perfil para Facebook e Instagram</li><li>Entregable: jpg, png, pdf, ai, eps, svg</li></ul><div class="sc-foot"><a href="#contacto" class="sc-cta">Cotizar</a></div></div>
+        <div class="sc"><span class="sc-badge">Producción Visual</span><span class="sc-icon">🎬</span><h3 class="sc-title">Audiovisual</h3><ul class="sc-list"><li>Fotografía profesional de marca y producto</li><li>Producción de video corporativo y comercial</li><li>Edición y postproducción</li><li>Contenido adaptado para redes sociales</li><li>Entrega en múltiples formatos y resoluciones</li></ul><div class="sc-foot"><a href="#contacto" class="sc-cta">Cotizar</a></div></div>
+      </div>
+    </div>
+
+    <div class="ppanel" id="tab-adm">
+      <div class="pg">
+        <div class="pc"><div class="pc-name">Admin <span class="gt">Básico</span></div><div class="pc-sub">Landing pages y sitios corporativos</div><ul class="pc-list"><li>Administración básica de landing pages o páginas corporativas</li><li>Implementación de semáforo de buenas prácticas</li><li>Actualización de títulos y meta descripciones (SEO básico)</li><li>Geolocalización de imágenes</li><li>Actualización mensual de contenido enviado por el cliente</li></ul><a href="#contacto" class="pc-btn">Solicitar plan</a></div>
+        <div class="pc feat"><div class="pc-name">Admin <span class="gt">Corporativo</span></div><div class="pc-sub">Páginas corporativas y tiendas virtuales</div><ul class="pc-list"><li>Administración de landing, corporativas y tiendas virtuales</li><li>Semáforo de buenas prácticas</li><li>Actualización de títulos y meta descripciones</li><li>Geolocalización de imágenes</li><li>Actualización mensual de contenido del cliente</li><li>Campañas según calendario de marketing</li><li>Lanzamiento de nuevos servicios y productos</li><li>Desarrollos especiales personalizados</li><li>Actualización de precios, descuentos y ofertas</li><li>Diseño o actualización de banner para el home</li></ul><a href="#contacto" class="pc-btn">Solicitar plan</a></div>
+        <div class="pc"><div class="pc-name">Admin <span class="gt">E-Commerce</span></div><div class="pc-sub">Exclusivo para tiendas virtuales</div><ul class="pc-list"><li>Administración exclusiva de tiendas virtuales</li><li>Semáforo de buenas prácticas SEO</li><li>Actualización de títulos y meta descripciones</li><li>Geolocalización de imágenes</li><li>Actualización mensual de contenido</li><li>Campañas según calendario de marketing</li><li>Lanzamiento de nuevos productos y servicios</li><li>Desarrollos especiales personalizados</li><li>Actualización de precios y descuentos</li><li>Banner para el home</li><li>Campañas promocionales y de lanzamiento</li><li>Recuperación de carritos abandonados</li><li>Optimización para cargas rápidas</li><li>Revestimiento en fechas especiales</li></ul><a href="#contacto" class="pc-btn">Solicitar plan</a></div>
+      </div>
+    </div>
+
+    <div class="ppanel" id="tab-seo">
+      <div class="pg">
+        <div class="pc"><div class="pc-name">SEO <span class="gt">Básico</span></div><div class="pc-sub">Posicionamiento inicial</div><ul class="pc-list"><li>Posicionamiento hasta 10 palabras o búsquedas clave</li><li>Auditoría bimensual de palabras clave</li><li>Reporte de resultados trimestral</li></ul><a href="#contacto" class="pc-btn">Solicitar plan</a></div>
+        <div class="pc feat"><div class="pc-name">SEO <span class="gt">Pro</span></div><div class="pc-sub">Para negocios en crecimiento</div><ul class="pc-list"><li>Posicionamiento hasta 18 palabras o búsquedas clave</li><li>Auditoría bimensual de palabras clave</li><li>Trabajo de SEO local</li><li>Generación de contenidos (1200 palabras) — 1 a 2 blogs mensuales</li><li>Reporte de resultados mensual</li></ul><a href="#contacto" class="pc-btn">Solicitar plan</a></div>
+        <div class="pc"><div class="pc-name">SEO <span class="gt">Ultra</span></div><div class="pc-sub">Dominación total de búsquedas</div><ul class="pc-list"><li>Posicionamiento hasta 30 palabras o búsquedas clave</li><li>Auditorías mensuales de palabras clave</li><li>Trabajo en SEO local</li><li>Generación de contenidos (2400 palabras) — 2 a 3 blogs mensuales</li><li>Actualización a Google My Business</li></ul><a href="#contacto" class="pc-btn">Solicitar plan</a></div>
+      </div>
+    </div>
+
+    <div class="ppanel" id="tab-av">
+      <div class="sg" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+        <div class="sc"><span class="sc-badge">Producción Visual</span><span class="sc-icon">📸</span><h3 class="sc-title">Fotografía Profesional</h3><ul class="sc-list"><li>Fotografía de marca y producto</li><li>Sesiones corporativas y de equipo</li><li>Fotografía optimizada para redes sociales</li><li>Edición y retoque profesional</li><li>Entrega en múltiples formatos y resoluciones</li></ul><div class="sc-foot"><a href="#contacto" class="sc-cta">Cotizar</a></div></div>
+        <div class="sc"><span class="sc-badge">Producción Visual</span><span class="sc-icon">🎥</span><h3 class="sc-title">Producción de Video</h3><ul class="sc-list"><li>Video corporativo y comercial</li><li>Reels y videos para redes sociales</li><li>Animaciones y motion graphics</li><li>Edición y postproducción profesional</li><li>Formatos adaptados para cada plataforma digital</li></ul><div class="sc-foot"><a href="#contacto" class="sc-cta">Cotizar</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso" class="sec">
+  <div class="wrap">
+    <div style="text-align:center;max-width:580px;margin:0 auto">
+      <p class="sl rv">Cómo trabajamos</p>
+      <h2 class="st rv d1">NUESTRO <span class="gt">PROCESO</span></h2>
+      <p class="ss rv d2" style="margin:0 auto">Un método probado que garantiza resultados en cada proyecto.</p>
+    </div>
+    <div class="pg2">
+      <div class="ps rv d1"><div class="ps-n"><span>01</span></div><div class="ps-t">Diagnóstico</div><div class="ps-txt">Analizamos tu marca, competencia y objetivos para construir la estrategia correcta.</div></div>
+      <div class="ps rv d2"><div class="ps-n"><span>02</span></div><div class="ps-t">Estrategia</div><div class="ps-txt">Diseñamos un plan de acción personalizado con metas claras y medibles.</div></div>
+      <div class="ps rv d3"><div class="ps-n"><span>03</span></div><div class="ps-t">Creación</div><div class="ps-txt">Producimos todo el material creativo: diseño, contenido, código y más.</div></div>
+      <div class="ps rv d4"><div class="ps-n"><span>04</span></div><div class="ps-t">Lanzamiento</div><div class="ps-txt">Publicamos, configuramos y ponemos en marcha con revisión total.</div></div>
+      <div class="ps rv"><div class="ps-n"><span>05</span></div><div class="ps-t">Optimización</div><div class="ps-txt">Medimos resultados, reportamos y ajustamos para maximizar el ROI.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta-b">
+  <div class="wrap">
+    <p class="sl" style="text-align:center">¿Listo para crecer?</p>
+    <h2 class="cta-t rv">DA EL GIRO DE <span class="gt">180°</span><br/>A TU NEGOCIO</h2>
+    <p class="cta-s rv d1">Agenda una consulta gratuita y descubre qué estrategia digital necesita tu empresa hoy.</p>
+    <div class="cta-acts rv d2"><a href="#contacto" class="btn-m">Solicitar consulta gratis</a><a href="https://wa.me/573000000000" target="_blank" class="btn-g">WhatsApp</a></div>
+  </div>
+</section>
+
+<section id="contacto" class="sec">
+  <div class="wrap">
+    <div class="cg">
+      <div>
+        <p class="sl rv">Hablemos</p>
+        <h2 class="st rv d1">TRANSFORMA TU <span class="gt">MARCA</span></h2>
+        <p class="about-p rv d2" style="margin-top:18px">Completa el formulario y uno de nuestros estrategas te contactará en menos de 24 horas con una propuesta personalizada.</p>
+        <div class="ci rv d3">
+          <div class="ci-item"><div class="ci-ic">✉</div><div><div class="ci-lb">Correo</div><div class="ci-val">info@180agenciadigital.com</div></div></div>
+          <div class="ci-item"><div class="ci-ic">💬</div><div><div class="ci-lb">WhatsApp</div><div class="ci-val">+57 300 000 0000</div></div></div>
+          <div class="ci-item"><div class="ci-ic">📍</div><div><div class="ci-lb">Ubicación</div><div class="ci-val">Colombia</div></div></div>
+          <div class="ci-item"><div class="ci-ic">🕐</div><div><div class="ci-lb">Atención</div><div class="ci-val">Lunes a viernes · 8am – 6pm</div></div></div>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div class="cf" id="cfW">
+          <div class="cf-row">
+            <div class="cfg"><label>Nombre</label><input type="text" id="cfN" placeholder="Tu nombre completo" required/></div>
+            <div class="cfg"><label>Empresa</label><input type="text" id="cfE" placeholder="Tu empresa"/></div>
+          </div>
+          <div class="cf-row">
+            <div class="cfg"><label>Correo</label><input type="email" id="cfM" placeholder="correo@empresa.com" required/></div>
+            <div class="cfg"><label>WhatsApp</label><input type="tel" id="cfT" placeholder="+57 300 000 0000"/></div>
+          </div>
+          <div class="cfg"><label>Servicio de interés</label>
+            <select id="cfS"><option value="" disabled selected>Selecciona el servicio</option><option>Redes Sociales — Plan Emprendedor</option><option>Redes Sociales — Plan Pyme</option><option>Redes Sociales — Plan Corporativo</option><option>Landing Page</option><option>Web Corporativo</option><option>E-Commerce</option><option>Desarrollo de Marca Básico</option><option>Desarrollo de Marca Corporativo</option><option>Administración Web</option><option>SEO / Posicionamiento</option><option>Fotografía / Video</option><option>Varios servicios</option></select>
+          </div>
+          <div class="cfg"><label>Mensaje</label><textarea id="cfMsg" placeholder="Cuéntanos sobre tu proyecto..."></textarea></div>
+          <button type="button" class="cf-sub" id="cfBtn">Enviar mensaje →</button>
+        </div>
+        <div class="cf-ok" id="cfOk"><div class="cf-ok-ic">🚀</div><p>¡Mensaje recibido! Te contactamos pronto.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="fb"><img src="logo.png" alt="180° Agencia Digital"/><p>Transformamos tu presencia digital con estrategia, creatividad y tecnología. Tu éxito es nuestra misión.</p></div>
+      <div class="fc"><div class="fc-t">Servicios</div><ul><li><a href="#port">Redes Sociales</a></li><li><a href="#port">Sitios Web</a></li><li><a href="#port">Branding</a></li><li><a href="#port">SEO</a></li><li><a href="#port">Admin Web</a></li><li><a href="#port">Audiovisual</a></li></ul></div>
+      <div class="fc"><div class="fc-t">Empresa</div><ul><li><a href="#about">Nosotros</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+      <div class="fc"><div class="fc-t">Contacto</div><ul><li><a href="mailto:info@180agenciadigital.com">info@180agenciadigital.com</a></li><li><a href="https://wa.me/573000000000">+57 300 000 0000</a></li><li><a>Colombia</a></li></ul></div>
+    </div>
+    <div class="fb2">
+      <p class="fc2">© 2025 180° Agencia Digital. Todos los derechos reservados.</p>
+      <div class="fsoc"><a href="#" class="fs">ig</a><a href="#" class="fs">fb</a><a href="#" class="fs">in</a><a href="#" class="fs">tk</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),cr=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function t(){cur.style.cssText=`left:${mx}px;top:${my}px`;rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cr.style.cssText=`left:${rx}px;top:${ry}px`;requestAnimationFrame(t)})();
+
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>70));
+
+const nt=document.getElementById('nt'),nl=document.getElementById('nl');
+nt.addEventListener('click',()=>{
+  nl.classList.toggle('open');
+  const s=nt.querySelectorAll('span');
+  if(nl.classList.contains('open')){s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(5px,-5px)'}
+  else{s.forEach(x=>{x.style.transform='';x.style.opacity=''})}
+});
+function cn(){nl.classList.remove('open');nt.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity=''})}
+
+const si=['Redes Sociales','Diseño Web','Branding','SEO','E-Commerce','Fotografía','Video','Community Manager','Google Ads','Landing Pages','Email Marketing','Admin Web'];
+const st2=document.getElementById('st');
+[...si,...si,...si,...si].forEach(s=>{const d=document.createElement('div');d.className='strip-i';d.innerHTML=`<span class="strip-d"></span>${s}<span class="strip-d"></span>`;st2.appendChild(d)});
+
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+function ac(el,t,sfx){let s=null;(function f(ts){if(!s)s=ts;const p=Math.min((ts-s)/1800,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*t)+sfx;if(p<1)requestAnimationFrame(f)})(performance.now())}
+let hd=false,ad=false;
+new IntersectionObserver(es=>{if(es[0].isIntersecting&&!hd){hd=true;ac(document.getElementById('hs1'),85,'+');ac(document.getElementById('hs2'),200,'+');ac(document.getElementById('hs3'),98,'%')}},{threshold:.3}).observe(document.getElementById('hero'));
+new IntersectionObserver(es=>{if(es[0].isIntersecting&&!ad){ad=true;ac(document.getElementById('am1'),85,'+');ac(document.getElementById('am2'),200,'+');ac(document.getElementById('am3'),98,'%');document.querySelectorAll('.am-bar-f').forEach(b=>{b.style.width=b.dataset.w+'%'})}},{threshold:.3}).observe(document.getElementById('about'));
+
+document.querySelectorAll('.ptab').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.ptab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.ppanel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('tab-'+b.dataset.tab).classList.add('active')})});
+
+document.getElementById('cfBtn').addEventListener('click',()=>{
+  const n=document.getElementById('cfN').value.trim(),e=document.getElementById('cfM').value.trim();
+  if(!n){document.getElementById('cfN').style.borderColor='#e53e3e';return}
+  if(!e){document.getElementById('cfM').style.borderColor='#e53e3e';return}
+  // Para activar: fetch('https://formspree.io/f/TU_ID',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,email:e})})
+  document.getElementById('cfW').style.display='none';
+  document.getElementById('cfOk').classList.add('show');
+});
+document.querySelectorAll('#cfW input,#cfW select,#cfW textarea').forEach(el=>el.addEventListener('focus',()=>el.style.borderColor=''));
+</script>
+</body>
+</html>
