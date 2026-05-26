@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo Empresarial 180°</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="./IMG/LOGO GRUPO EMPRESARIAL NEGATIVO.svg">
+  <link rel="stylesheet" href="innovative-features.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <img src="./IMG/LOGO GRUPO EMPRESARIAL NEGATIVO.svg" alt="Grupo Empresarial 180°" class="brand-logo" />
+      <div>
+        <h1 style="text-transform: none; font-size: 1.2rem;">Grupo Empresarial</h1>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="index.php">Inicio</a>
+      <a href="unidades.php">Unidades de negocio</a>
+      <a href="nosotros.php">Nosotros</a>
+      <a href="contacto.php">Contáctenos</a>
+    </nav>
+  </header>
+
+  <main>
+    
+
+    
+
+    <section id="nosotros" class="about-section reveal" style="max-width: 1200px; margin: 0 auto; padding: 100px clamp(20px, 4vw, 48px) 40px;">
+      <div class="testimonial-card dark" style="text-align: center; padding: 50px clamp(20px, 4vw, 60px); margin-bottom: 40px;">
+        <span class="eyebrow" style="justify-content: center; margin-bottom: 20px;">Nosotros</span>
+        <h3 style="margin-bottom: 30px; font-size: 2.5rem; color: var(--text);">¿Quiénes somos?</h3>
+        <p style="margin: 0 auto 20px; font-size: 1.15rem; max-width: 900px; color: #d9d0af; line-height: 1.7;">Somos una organización que impulsa cambios reales. No solo acompañamos empresas, las ayudamos a dar el giro que necesitan para evolucionar, adaptarse y abrir nuevas oportunidades. Vemos más allá de lo evidente, identificamos el potencial y lo convertimos en resultados.</p>
+      </div>
+
+      <div class="testimonial-card" style="text-align: center; padding: 50px clamp(20px, 4vw, 60px); margin-bottom: 40px;">
+        <span class="eyebrow" style="justify-content: center; margin-bottom: 20px;">Propósito</span>
+        <h3 style="margin-bottom: 30px; font-size: 2.5rem; color: var(--text);">Por qué nació Grupo Empresarial 180°</h3>
+        <p style="margin: 0 auto 20px; font-size: 1.15rem; max-width: 900px; color: var(--text); line-height: 1.7;">Nacimos con la idea de crear un ecosistema capaz de unir creatividad, tecnología e innovación para transformar negocios. Un enfoque humano, con visión y propósito, diseñado para conectar más y llevar las ideas al siguiente nivel.</p>
+      </div>
+
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span class="eyebrow" style="justify-content: center; margin-bottom: 20px;">Nuestro Equipo</span>
+        <h3 style="margin-bottom: 30px; font-size: 2.5rem; color: var(--text);">Conoce a los humanos detrás de 180°</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px;">
+          <div class="testimonial-card dark" style="padding: 30px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div style="position: relative; width: 140px; height: 140px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; animation: float 6s ease-in-out infinite;">
+              <div style="position: absolute; inset: 0; border-radius: 50%; border: 2px dashed rgba(212, 175, 55, 0.4); animation: spin 15s linear infinite;"></div>
+              <div style="position: absolute; inset: 8px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.05); border-top-color: var(--gold); animation: spin 10s linear infinite reverse;"></div>
+              <div style="position: absolute; inset: 20px; border-radius: 50%; background: radial-gradient(circle at top right, #f7d988 0%, var(--gold) 100%); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); overflow: hidden; display: flex; align-items: flex-end; justify-content: center;">
+                <img src="./IMG/AVATARES/Avatar Nathaly.svg" alt="Community Manager" style="width: 88%; height: 88%; object-fit: contain; object-position: bottom;" />
+              </div>
+            </div>
+            <h4 style="color: var(--text); margin-bottom: 10px; font-size: 1.2rem;">Community Manager</h4>
+            <p style="color: var(--gold); font-size: 0.95rem; font-weight: bold; margin-bottom: 10px;">Dirección y Crecimiento</p>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5;">Con visión global, orquesta el crecimiento y define el rumbo de los proyectos hacia el éxito rotundo.</p>
+          </div>
+          <div class="testimonial-card dark" style="padding: 30px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div style="position: relative; width: 140px; height: 140px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; animation: float 6s ease-in-out infinite 1s;">
+              <div style="position: absolute; inset: 0; border-radius: 50%; border: 2px dashed rgba(212, 175, 55, 0.4); animation: spin 14s linear infinite;"></div>
+              <div style="position: absolute; inset: 8px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.05); border-top-color: var(--gold); animation: spin 11s linear infinite reverse;"></div>
+              <div style="position: absolute; inset: 20px; border-radius: 50%; background: radial-gradient(circle at top right, #f7d988 0%, var(--gold) 100%); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); overflow: hidden; display: flex; align-items: flex-end; justify-content: center;">
+                <img src="./IMG/AVATARES/Avatar Anyelo.svg" alt="Desarrolladores de Software" style="width: 88%; height: 88%; object-fit: contain; object-position: bottom;" />
+              </div>
+            </div>
+            <h4 style="color: var(--text); margin-bottom: 10px; font-size: 1.2rem;">Desarrolladores de Software</h4>
+            <p style="color: var(--gold); font-size: 0.95rem; font-weight: bold; margin-bottom: 10px;">Innovación en Software</p>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5;">Arquitecta de soluciones digitales a medida, transformando la complejidad en código limpio y eficiente.</p>
+          </div>
+          <div class="testimonial-card dark" style="padding: 30px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div style="position: relative; width: 140px; height: 140px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; animation: float 6s ease-in-out infinite 2s;">
+              <div style="position: absolute; inset: 0; border-radius: 50%; border: 2px dashed rgba(212, 175, 55, 0.4); animation: spin 16s linear infinite;"></div>
+              <div style="position: absolute; inset: 8px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.05); border-top-color: var(--gold); animation: spin 9s linear infinite reverse;"></div>
+              <div style="position: absolute; inset: 20px; border-radius: 50%; background: radial-gradient(circle at top right, #f7d988 0%, var(--gold) 100%); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); overflow: hidden; display: flex; align-items: flex-end; justify-content: center;">
+                <img src="./IMG/AVATARES/Avatar Natalia.svg" alt="Diseñadores Gráficos" style="width: 88%; height: 88%; object-fit: contain; object-position: bottom;" />
+              </div>
+            </div>
+            <h4 style="color: var(--text); margin-bottom: 10px; font-size: 1.2rem;">Diseñadores Gráficos</h4>
+            <p style="color: var(--gold); font-size: 0.95rem; font-weight: bold; margin-bottom: 10px;">Diseño y Branding</p>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5;">Da vida a las ideas a través de experiencias visuales únicas que conectan verdaderamente con la audiencia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial-section reveal" style="padding-top: 0; padding-bottom: 20px;">
+      <div class="testimonial-card">
+        <span class="eyebrow">Visión</span>
+        <p style="margin-top: 20px; font-size: 1.15rem; line-height: 1.7; color: var(--text);">Ser una marca que trascienda en el tiempo por su capacidad de transformar realidades, impulsar empresas y dejar huella en cada proyecto, convirtiéndonos en un símbolo de evolución, confianza y crecimiento.</p>
+      </div>
+      <div class="testimonial-card dark">
+        <span class="eyebrow">Misión</span>
+        <p style="margin-top: 20px; font-size: 1.15rem; line-height: 1.7; color: var(--text);">Inspirar y potenciar la evolución de empresas y personas, generando oportunidades de crecimiento a través de soluciones estratégicas, innovación constante y una visión transformadora.</p>
+      </div>
+    </section>
+
+    
+  </main>
+
+  <footer id="contacto" class="site-footer reveal" style="display: flex; flex-direction: column; gap: 40px; padding: 80px clamp(20px, 4vw, 48px) 40px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px;">
+      
+      <!-- Contact Info -->
+      <div class="footer-brand">
+        <img src="./IMG/LOGO GRUPO EMPRESARIAL NEGATIVO.svg" alt="Grupo Empresarial" class="footer-logo" style="margin-bottom: 24px;" />
+        <p style="color: var(--text); font-size: 1.2rem; margin-bottom: 16px;"><strong>Hablemos de tu proyecto</strong></p>
+        <p style="display: flex; align-items: center; gap: 10px;">✉️ teamempresa180@gmail.com</p>
+        <p style="display: flex; align-items: center; gap: 10px;">📱 +57 311 8966083 (WhatsApp)</p>
+        <div style="display: flex; gap: 20px; margin-top: 20px;">
+          <a href="https://www.instagram.com/grupoempresarial180grados/" style="color: var(--gold); text-decoration: none; font-weight: 500;">Instagram</a>
+          <a href="https://www.facebook.com/profile.php?id=61560443625594&rdid=mBMAQriqxA1TxyXw&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1cSjcWGSrW%2F#" style="color: var(--gold); text-decoration: none; font-weight: 500;">Facebook</a>
+        </div>
+      </div>
+
+      <!-- CRM Lead Form -->
+      <div class="footer-form" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 30px; border-radius: 12px;">
+        <h3 style="color: var(--gold); margin-bottom: 20px;">Envíanos un mensaje</h3>
+        <form id="crm-contact-form" onsubmit="submitToCRM(event)" style="display: flex; flex-direction: column; gap: 15px;">
+          <input type="text" id="crm-name" placeholder="Tu Nombre o Empresa" required style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px; border-radius: 6px; outline: none;">
+          <input type="email" id="crm-email" placeholder="Tu Correo Electrónico" required style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px; border-radius: 6px; outline: none;">
+          <textarea id="crm-message" placeholder="¿En qué te podemos ayudar?" required rows="4" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px; border-radius: 6px; outline: none; resize: none;"></textarea>
+          <button type="submit" class="btn primary" style="width: 100%; border: none; cursor: pointer;">Enviar Mensaje</button>
+          <p id="crm-success-msg" style="color: #4CAF50; font-size: 0.9rem; display: none; margin: 0;">¡Mensaje recibido! Te contactaremos pronto.</p>
+        </form>
+      </div>
+
+      <!-- Legal Links -->
+      <div class="footer-links" style="padding-top: 10px;">
+        <p style="color: var(--text); font-size: 1.2rem; margin-bottom: 16px;"><strong>Legal e Interno</strong></p>
+        <a href="#" style="color: #c8b884; text-decoration: none; margin-bottom: 12px; display: block;">Política de privacidad</a>
+        <a href="#" style="color: #c8b884; text-decoration: none; margin-bottom: 12px; display: block;">Tratamiento de datos</a>
+        <a href="admin.php" target="_blank" style="color: var(--gold); text-decoration: none; margin-top: 20px; display: inline-block; padding: 5px 10px; border: 1px solid var(--gold); border-radius: 4px; font-size: 0.8rem;">🔒 Acceso CRM</a>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 40px; text-align: center; color: var(--muted); font-size: 0.95rem;">
+      <p>© 2026 Grupo Empresarial 180 Grados. Todos los derechos reservados.</p>
+      <p style="margin-top: 10px;">Diseñado para impulsar evolución y crecimiento empresarial.</p>
+    </div>
+    
+    <script>
+      async function submitToCRM(e) {
+        e.preventDefault();
+        const name = document.getElementById('crm-name').value;
+        const email = document.getElementById('crm-email').value;
+        const message = document.getElementById('crm-message').value;
+        
+        const data = {
+          name: name,
+          email: email,
+          message: message,
+          source: 'Web Grupo Empresarial'
+        };
+
+        try {
+          const response = await fetch('api/leads.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+          
+          if (response.ok) {
+            document.getElementById('crm-success-msg').style.display = 'block';
+            document.getElementById('crm-contact-form').reset();
+            setTimeout(() => {
+               document.getElementById('crm-success-msg').style.display = 'none';
+            }, 4000);
+          } else {
+            console.error('Error saving lead');
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    </script>
+  </footer>
+
+  <!-- Chatbot IA - Grupo Empresarial 180° -->
+  <div id="chatbot-widget" class="chatbot-widget">
+    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Abrir chat con IA">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span class="chatbot-badge">IA</span>
+    </button>
+
+    <div id="chatbot-window" class="chatbot-window">
+      <div class="chatbot-header">
+        <div class="chatbot-avatar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+            </polygon>
+          </svg>
+        </div>
+        <div class="chatbot-title">
+          <strong>Asistente IA</strong>
+          <span>Grupo Empresarial 180°</span>
+        </div>
+        <button id="chatbot-clear" class="chatbot-action-btn" aria-label="Limpiar chat" style="background:none; border:none; color:currentColor; cursor:pointer; opacity:0.7; transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+        </button>
+        <button id="chatbot-close" class="chatbot-close" aria-label="Cerrar chat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div id="chatbot-messages" class="chatbot-messages">
+        <div class="chatbot-message bot">
+          <div class="message-content">
+            <p>Hola 👋</p>
+            <p>¡Gracias por comunicarte con Grupo Empresarial 180°! 🚀</p>
+            <p>Somos un grupo empresarial especializado en marketing, branding, contenido digital y desarrollo tecnológico.</p>
+            <p>Queremos conocer más sobre tu proyecto para ayudarte de la mejor manera ✨</p>
+            <p>Cuéntanos:</p>
+            <ul>
+              <li>Tu nombre</li>
+              <li>El servicio que te interesa</li>
+              <li>Y qué objetivo quieres lograr actualmente con tu marca o empresa</li>
+            </ul>
+            <div class="quick-actions">
+              <button class="quick-action" data-query="servicios">¿Qué servicios ofrecen?</button>
+              <button class="quick-action" data-query="cotizacion">Solicitar cotización</button>
+              <button class="quick-action" data-query="proceso">¿Cómo es el proceso?</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chatbot-input-area">
+        <input type="text" id="chatbot-input" placeholder="Escribe tu mensaje..." autocomplete="off">
+        <button id="chatbot-send" class="chatbot-send" aria-label="Enviar mensaje">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="innovative-features.js"></script>
+</body>
+
+</html>

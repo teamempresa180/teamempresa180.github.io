@@ -1,0 +1,40 @@
+<?php
+// api/interactions.php
+header('Content-Type: application/json');
+require_once 'db.php';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['user_id'])) {
+    http_response_code(401);
+    echo json_encode(['success' => false, 'error' => 'unauthorized', 'message' => 'Acceso denegado. Inicie sesión.']);
+    exit;
+}
+
+$method = $_SERVER['REQUEST_METHOD'];
+$input = json_decode(file_get_contents('php://input'), true);
+
+if ($method === 'GET') {
+    if (isset($_GET['lead_id'])) {
+        $stmt = $pdo->prepare('SELECT * FROM interactions WHERE lead_id = ? ORDER BY date DESC');
+        $stmt->execute([$_GET['lead_id']]);
+        echo json_encode($stmt->fetchAll());
+    } else {
+        echo json_encode(['error' => 'Missing lead_id']);
+    }
+} elseif ($method === 'POST') {
+    if (isset($input['lead_id'], $input['type'], $input['content'])) {
+        $stmt = $pdo->prepare('INSERT INTO interactions (lead_id, type, content, date) VALUES (?, ?, ?, NOW())');
+        try {
+            $stmt->execute([$input['lead_id'], $input['type'], $input['content']]);
+            echo json_encode(['success' => true, 'id' => $pdo->lastInsertId()]);
+        } catch (Exception $e) {
+            echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+        }
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Missing parameters']);
+    }
+}
+?>

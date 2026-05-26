@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo Empresarial 180°</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="./IMG/LOGO GRUPO EMPRESARIAL NEGATIVO.svg">
+  <link rel="stylesheet" href="innovative-features.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <img src="./IMG/LOGO GRUPO EMPRESARIAL NEGATIVO.svg" alt="Grupo Empresarial 180°" class="brand-logo" />
+      <div>
+        <h1 style="text-transform: none; font-size: 1.2rem;">Grupo Empresarial</h1>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="index.php">Inicio</a>
+      <a href="unidades.php">Unidades de negocio</a>
+      <a href="nosotros.php">Nosotros</a>
+      <a href="contacto.php">Contáctenos</a>
+    </nav>
+  </header>
+
+  <main>
+    
+
+    <section id="unidades-de-negocio" class="subcompanies-section reveal">
+      <div class="section-header">
+        <span>Ecosistema 180°</span>
+        <h3>Encuentra las unidades de negocio del grupo empresarial</h3>
+      </div>
+      <div class="service-buttons">
+        <a href="./SITIO GRUPO AGENCIA DIGITAL 180°/index.php" class="subcompany-card" style="flex-direction: column; justify-content: center;">
+          <img src="./IMG/Logo agencia.svg" alt="Logo Agencia" style="margin-bottom: 25px; width: 140px; height: auto;" />
+          <span style="margin-bottom: 15px; font-size: 1.6rem; font-weight: 700; text-align: center;">Agencia digital</span>
+          <p style="font-size: 1.1rem; color: var(--muted); text-align: center; margin: 0; line-height: 1.5; font-weight: normal;">Diseño, branding y redes sociales</p>
+        </a>
+        <a href="./SITIO SOFTWARE STUDIO 180°/index.php" class="subcompany-card" style="flex-direction: column; justify-content: center;">
+          <img src="./IMG/Logo Software Studio.svg" alt="Logo 180 Software Studio" style="margin-bottom: 25px; width: 140px; height: auto;" />
+          <span style="margin-bottom: 15px; font-size: 1.6rem; font-weight: 700; text-align: center;">180 Software Studio</span>
+          <p style="font-size: 1.1rem; color: var(--muted); text-align: center; margin: 0; line-height: 1.5; font-weight: normal;">Desarrollo de software a medida</p>
+        </a>
+      </div>
+      <div style="text-align: center; margin-top: 50px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <a href="contacto.php" class="btn primary">Quiero una estrategia</a>
+        <a href="contacto.php" class="btn secondary" style="border: 1px solid var(--gold); color: var(--gold); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600;">Necesito una web</a>
+      </div>
+    </section>
+
+    
+
+    
+  </main>
+
+  <footer id="contacto" class="site-footer reveal" style="display: flex; flex-direction: column; gap: 40px; padding: 80px clamp(20px, 4vw, 48px) 40px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px;">
+      
+      <!-- Contact Info -->
+      <div class="footer-brand">
+        <img src="./IMG/LOGO GRUPO EMPRESARIAL NEGATIVO.svg" alt="Grupo Empresarial" class="footer-logo" style="margin-bottom: 24px;" />
+        <p style="color: var(--text); font-size: 1.2rem; margin-bottom: 16px;"><strong>Hablemos de tu proyecto</strong></p>
+        <p style="display: flex; align-items: center; gap: 10px;">✉️ teamempresa180@gmail.com</p>
+        <p style="display: flex; align-items: center; gap: 10px;">📱 +57 311 8966083 (WhatsApp)</p>
+        <div style="display: flex; gap: 20px; margin-top: 20px;">
+          <a href="https://www.instagram.com/grupoempresarial180grados/" style="color: var(--gold); text-decoration: none; font-weight: 500;">Instagram</a>
+          <a href="https://www.facebook.com/profile.php?id=61560443625594&rdid=mBMAQriqxA1TxyXw&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1cSjcWGSrW%2F#" style="color: var(--gold); text-decoration: none; font-weight: 500;">Facebook</a>
+        </div>
+      </div>
+
+      <!-- CRM Lead Form -->
+      <div class="footer-form" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 30px; border-radius: 12px;">
+        <h3 style="color: var(--gold); margin-bottom: 20px;">Envíanos un mensaje</h3>
+        <form id="crm-contact-form" onsubmit="submitToCRM(event)" style="display: flex; flex-direction: column; gap: 15px;">
+          <input type="text" id="crm-name" placeholder="Tu Nombre o Empresa" required style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px; border-radius: 6px; outline: none;">
+          <input type="email" id="crm-email" placeholder="Tu Correo Electrónico" required style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px; border-radius: 6px; outline: none;">
+          <textarea id="crm-message" placeholder="¿En qué te podemos ayudar?" required rows="4" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px; border-radius: 6px; outline: none; resize: none;"></textarea>
+          <button type="submit" class="btn primary" style="width: 100%; border: none; cursor: pointer;">Enviar Mensaje</button>
+          <p id="crm-success-msg" style="color: #4CAF50; font-size: 0.9rem; display: none; margin: 0;">¡Mensaje recibido! Te contactaremos pronto.</p>
+        </form>
+      </div>
+
+      <!-- Legal Links -->
+      <div class="footer-links" style="padding-top: 10px;">
+        <p style="color: var(--text); font-size: 1.2rem; margin-bottom: 16px;"><strong>Legal e Interno</strong></p>
+        <a href="#" style="color: #c8b884; text-decoration: none; margin-bottom: 12px; display: block;">Política de privacidad</a>
+        <a href="#" style="color: #c8b884; text-decoration: none; margin-bottom: 12px; display: block;">Tratamiento de datos</a>
+        <a href="admin.php" target="_blank" style="color: var(--gold); text-decoration: none; margin-top: 20px; display: inline-block; padding: 5px 10px; border: 1px solid var(--gold); border-radius: 4px; font-size: 0.8rem;">🔒 Acceso CRM</a>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 40px; text-align: center; color: var(--muted); font-size: 0.95rem;">
+      <p>© 2026 Grupo Empresarial 180 Grados. Todos los derechos reservados.</p>
+      <p style="margin-top: 10px;">Diseñado para impulsar evolución y crecimiento empresarial.</p>
+    </div>
+    
+    <script>
+      async function submitToCRM(e) {
+        e.preventDefault();
+        const name = document.getElementById('crm-name').value;
+        const email = document.getElementById('crm-email').value;
+        const message = document.getElementById('crm-message').value;
+        
+        const data = {
+          name: name,
+          email: email,
+          message: message,
+          source: 'Web Grupo Empresarial'
+        };
+
+        try {
+          const response = await fetch('api/leads.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+          
+          if (response.ok) {
+            document.getElementById('crm-success-msg').style.display = 'block';
+            document.getElementById('crm-contact-form').reset();
+            setTimeout(() => {
+               document.getElementById('crm-success-msg').style.display = 'none';
+            }, 4000);
+          } else {
+            console.error('Error saving lead');
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    </script>
+  </footer>
+
+  <!-- Chatbot IA - Grupo Empresarial 180° -->
+  <div id="chatbot-widget" class="chatbot-widget">
+    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Abrir chat con IA">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span class="chatbot-badge">IA</span>
+    </button>
+
+    <div id="chatbot-window" class="chatbot-window">
+      <div class="chatbot-header">
+        <div class="chatbot-avatar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+            </polygon>
+          </svg>
+        </div>
+        <div class="chatbot-title">
+          <strong>Asistente IA</strong>
+          <span>Grupo Empresarial 180°</span>
+        </div>
+        <button id="chatbot-clear" class="chatbot-action-btn" aria-label="Limpiar chat" style="background:none; border:none; color:currentColor; cursor:pointer; opacity:0.7; transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+        </button>
+        <button id="chatbot-close" class="chatbot-close" aria-label="Cerrar chat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div id="chatbot-messages" class="chatbot-messages">
+        <div class="chatbot-message bot">
+          <div class="message-content">
+            <p>Hola 👋</p>
+            <p>¡Gracias por comunicarte con Grupo Empresarial 180°! 🚀</p>
+            <p>Somos un grupo empresarial especializado en marketing, branding, contenido digital y desarrollo tecnológico.</p>
+            <p>Queremos conocer más sobre tu proyecto para ayudarte de la mejor manera ✨</p>
+            <p>Cuéntanos:</p>
+            <ul>
+              <li>Tu nombre</li>
+              <li>El servicio que te interesa</li>
+              <li>Y qué objetivo quieres lograr actualmente con tu marca o empresa</li>
+            </ul>
+            <div class="quick-actions">
+              <button class="quick-action" data-query="servicios">¿Qué servicios ofrecen?</button>
+              <button class="quick-action" data-query="cotizacion">Solicitar cotización</button>
+              <button class="quick-action" data-query="proceso">¿Cómo es el proceso?</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chatbot-input-area">
+        <input type="text" id="chatbot-input" placeholder="Escribe tu mensaje..." autocomplete="off">
+        <button id="chatbot-send" class="chatbot-send" aria-label="Enviar mensaje">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="innovative-features.js"></script>
+</body>
+
+</html>
