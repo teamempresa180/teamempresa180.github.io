@@ -1,0 +1,138 @@
+<?php
+// api/leads.html
+header('Content-Type: application/json');
+require_once 'db.html';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$method = $_SERVER['REQUEST_METHOD'];
+
+// GET, PUT, and DELETE require administrative login
+if ($method !== 'POST') {
+    if (!isset($_SESSION['user_id'])) {
+        http_response_code(401);
+        echo json_encode(['success' => false, 'error' => 'unauthorized', 'message' => 'Acceso denegado. Inicie sesión.']);
+        exit;
+    }
+}
+$input = json_decode(file_get_contents('php://input'), true);
+if (!$input && !empty($_POST)) $input = $_POST;
+
+function calculateScore($lead) {
+    $score = 10; // Base score
+    if (!empty($lead['phone'])) $score += 20;
+    if (!empty($lead['company'])) $score += 15;
+    if (isset($lead['budget']) && floatval($lead['budget']) > 1000000) $score += 25;
+    if (isset($lead['budget']) && floatval($lead['budget']) > 5000000) $score += 15; // Additional for high budget
+    if (in_array($lead['status'], ['contactados', 'negociacion'])) $score += 15;
+    if ($lead['status'] === 'cerrados') $score = 100;
+    return min(100, $score);
+}
+
+function logInteraction($pdo, $lead_id, $type, $content) {
+    $stmt = $pdo->prepare('INSERT INTO interactions (lead_id, type, content, date) VALUES (?, ?, ?, NOW())');
+    $stmt->execute([$lead_id, $type, $content]);
+}
+
+if ($method === 'POST') {
+    if (isset($input['name'], $input['email'])) {
+        $stmt = $pdo->prepare('INSERT INTO leads (name, email, phone, company, message, source, budget, score, status, assigned_to, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+        $source = isset($input['source']) ? $input['source'] : 'Web Grupo Empresarial';
+        $status = isset($input['status']) ? $input['status'] : 'nuevos';
+        $phone = isset($input['phone']) ? $input['phone'] : '';
+        $company = isset($input['company']) ? $input['company'] : '';
+        $message = isset($input['message']) ? $input['message'] : '';
+        $budget = isset($input['budget']) ? floatval($input['budget']) : 0.00;
+        $assigned_to = isset($input['assigned_to']) && $input['assigned_to'] !== '' ? $input['assigned_to'] : null;
+        
+        $score = calculateScore(['phone'=>$phone, 'company'=>$company, 'budget'=>$budget, 'status'=>$status]);
+
+        try {
+            $stmt->execute([$input['name'], $input['email'], $phone, $company, $message, $source, $budget, $score, $status, $assigned_to]);
+            $lead_id = $pdo->lastInsertId();
+            logInteraction($pdo, $lead_id, 'system', 'Lead creado desde: ' . $source);
+            echo json_encode(['success' => true, 'id' => $lead_id, 'score' => $score]);
+        } catch (Exception $e) {
+            echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+        }
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Faltan campos obligatorios']);
+    }
+}
+elseif ($method === 'GET') {
+    $stmt = $pdo->query('
+        SELECT l.*, 
+        (SELECT COUNT(*) FROM tasks t WHERE t.lead_id = l.id AND t.is_completed = 0) as pending_tasks,
+        (SELECT COUNT(*) FROM tasks t WHERE t.lead_id = l.id) as total_tasks
+        FROM leads l 
+        ORDER BY l.date DESC
+    ');
+    $leads = $stmt->fetchAll();
+    echo json_encode($leads);
+}
+elseif ($method === 'PUT') {
+    if (isset($input['id'])) {
+        // Full update or just status update
+        try {
+            $lead_id = $input['id'];
+            
+            // Fetch current to calculate score and log changes
+            $curr = $pdo->prepare("SELECT * FROM leads WHERE id = ?");
+            $curr->execute([$lead_id]);
+            $current_lead = $curr->fetch();
+            
+            if (!$current_lead) {
+                echo json_encode(['success' => false, 'error' => 'Lead not found']);
+                exit;
+            }
+
+            if (isset($input['name'])) {
+                // Full Update
+                $stmt = $pdo->prepare('UPDATE leads SET name=?, email=?, phone=?, company=?, message=?, source=?, budget=?, status=?, assigned_to=? WHERE id=?');
+                $stmt->execute([
+                    $input['name'], $input['email'], $input['phone']??'', $input['company']??'', 
+                    $input['message']??'', $input['source']??'', $input['budget']??0, 
+                    $input['status'], $input['assigned_to']??null, $lead_id
+                ]);
+                $newScore = calculateScore($input);
+                $pdo->prepare('UPDATE leads SET score=? WHERE id=?')->execute([$newScore, $lead_id]);
+                
+                logInteraction($pdo, $lead_id, 'system', 'Lead actualizado manualmente.');
+                echo json_encode(['success' => true, 'score' => $newScore]);
+            } else if (isset($input['status'])) {
+                // Status Update Only (Drag & Drop)
+                $stmt = $pdo->prepare('UPDATE leads SET status = ? WHERE id = ?');
+                $stmt->execute([$input['status'], $lead_id]);
+                
+                $current_lead['status'] = $input['status'];
+                $newScore = calculateScore($current_lead);
+                $pdo->prepare('UPDATE leads SET score=? WHERE id=?')->execute([$newScore, $lead_id]);
+                
+                logInteraction($pdo, $lead_id, 'status_change', 'Estado cambiado a: ' . $input['status']);
+                echo json_encode(['success' => true, 'score' => $newScore]);
+            }
+        } catch (Exception $e) {
+            echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+        }
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Missing id']);
+    }
+}
+elseif ($method === 'DELETE') {
+    if (isset($input['id'])) {
+         $stmt = $pdo->prepare('DELETE FROM leads WHERE id = ?');
+         try {
+             $stmt->execute([$input['id']]);
+             echo json_encode(['success' => true]);
+         } catch (Exception $e) {
+             echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+         }
+    } else {
+         echo json_encode(['success' => false, 'error' => 'Missing id']);
+    }
+} else {
+    echo json_encode(['error' => 'Invalid method']);
+}
+?>

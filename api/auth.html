@@ -1,0 +1,98 @@
+<?php
+// api/auth.html - Serves authentication requests using PHP sessions
+header('Content-Type: application/json');
+require_once 'db.html';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$method = $_SERVER['REQUEST_METHOD'];
+
+if ($method === 'GET') {
+    $action = $_GET['action'] ?? 'check';
+
+    if ($action === 'check') {
+        if (isset($_SESSION['user_id'])) {
+            echo json_encode([
+                'success' => true,
+                'logged_in' => true,
+                'user' => [
+                    'id' => $_SESSION['user_id'],
+                    'name' => $_SESSION['user_name'],
+                    'email' => $_SESSION['user_email'],
+                    'role' => $_SESSION['user_role']
+                ]
+            ]);
+        } else {
+            echo json_encode([
+                'success' => true,
+                'logged_in' => false
+            ]);
+        }
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Acción GET no válida']);
+    }
+    exit;
+}
+
+if ($method === 'POST') {
+    $input = json_decode(file_get_contents('php://input'), true);
+    if (!$input && !empty($_POST)) $input = $_POST;
+
+    $action = $input['action'] ?? 'login';
+
+    if ($action === 'login') {
+        $email = trim($input['email'] ?? '');
+        $password = trim($input['password'] ?? '');
+
+        if (empty($email) || empty($password)) {
+            echo json_encode(['success' => false, 'error' => 'Correo y contraseña obligatorios']);
+            exit;
+        }
+
+        try {
+            $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ?');
+            $stmt->execute([$email]);
+            $user = $stmt->fetch();
+
+            if ($user && password_verify($password, $user['password_hash'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_name'] = $user['name'];
+                $_SESSION['user_email'] = $user['email'];
+                $_SESSION['user_role'] = $user['role'];
+
+                echo json_encode([
+                    'success' => true,
+                    'user' => [
+                        'id' => $user['id'],
+                        'name' => $user['name'],
+                        'email' => $user['email'],
+                        'role' => $user['role']
+                    ]
+                ]);
+            } else {
+                echo json_encode(['success' => false, 'error' => 'Credenciales incorrectas']);
+            }
+        } catch (Exception $e) {
+            echo json_encode(['success' => false, 'error' => 'Error de autenticación: ' . $e->getMessage()]);
+        }
+    } elseif ($action === 'logout') {
+        $_SESSION = [];
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+        session_destroy();
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Acción POST no válida']);
+    }
+    exit;
+}
+
+echo json_encode(['success' => false, 'error' => 'Método no soportado']);
+?>
